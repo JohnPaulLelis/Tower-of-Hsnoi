@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tower of Hanoi</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="title">Tower of Hanoi</h1>
+
+    <div id="error-banner" class="error-banner hidden"></div>
+
+    <section class="hud">
+      <div class="counter"><span class="counter-label">Time</span><span class="counter-value" id="time">00:00.0</span></div>
+      <div class="counter"><span class="counter-label">Moves</span><span class="counter-value" id="moves">0</span></div>
+      <div class="counter"><span class="counter-label">Invalid</span><span class="counter-value" id="invalid">0</span></div>
+      <div class="counter"><span class="counter-label">Optimal</span><span class="counter-value" id="optimal">31</span></div>
+    </section>
+
+    <section class="controls">
+      <button id="new-game" class="brass-btn" type="button">New Game</button>
+
+      <label class="control-group brass-plate">
+        <span>Disks</span>
+        <select id="disk-count">
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+      </label>
+
+      <button id="auto-solve" class="brass-btn" type="button">Auto-Solve</button>
+
+      <label class="control-group brass-plate">
+        <span>Speed <strong id="speed-label">3x</strong></span>
+        <input id="speed" type="range" min="1" max="10" step="1" value="3">
+      </label>
+    </section>
+
+    <section class="game-box" id="game-box">
+      <div class="pegs" id="pegs">
+        <div class="peg" data-peg="0">
+          <div class="peg-rod"></div>
+          <div class="disks-area"><div class="disks-stack"></div></div>
+        </div>
+        <div class="peg" data-peg="1">
+          <div class="peg-rod"></div>
+          <div class="disks-area"><div class="disks-stack"></div></div>
+        </div>
+        <div class="peg" data-peg="2">
+          <div class="peg-rod"></div>
+          <div class="disks-area"><div class="disks-stack"></div></div>
+        </div>
+      </div>
+      <div class="base"></div>
+      <div id="fly-layer"></div>
+    </section>
+
+    <p class="hint">Click a peg to pick up its top disk, then click the peg where you want to put it.</p>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <h2>You win!</h2>
+      <dl class="results">
+        <dt>Time</dt><dd id="result-time">-</dd>
+        <dt>Your moves</dt><dd id="result-moves">-</dd>
+        <dt>Optimal moves</dt><dd id="result-optimal">-</dd>
+      </dl>
+      <div class="modal-actions">
+        <button id="modal-new" class="brass-btn" type="button">Play Again</button>
+        <button id="modal-close" class="brass-btn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/game.js"></script>
+</body>
+</html>
